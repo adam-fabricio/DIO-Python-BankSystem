@@ -5,8 +5,113 @@ import os
 import platform
 
 
-# Função principal
+
+#  Função main
 def main():
+    desafio = ''
+    while desafio != 'q':
+        desafio = input(exibe_menu("escolhe_desafio"))
+        if desafio == '1':
+            print()
+            print("=" * 40 )
+            print("\tEntrando no desafio 1!")
+            print("=" * 40 )
+            print()
+            desafio_1()
+
+        elif desafio == 2:
+            print()
+            print("=" * 40 )
+            print("\tEntrando no desafio 2!")
+            print("=" * 40 )
+            print()
+            desafio_2()
+        elif desafio == 'q':
+            print()
+            print("=" * 40 )
+            print("\t\tSaindo...")
+            print("=" * 40 )
+            print()
+        
+        else:
+            print("=" * 40 )
+            print("\t\tOpção Invalida...")
+            print("=" * 40 )
+
+
+def exibe_menu(menu: str) -> str:
+    escolhe_desafio = """
+
+    [1]\tDesafio 1
+    [2]\tDesafio 2
+    ========================
+    [q]\tSair
+
+    Digite a Opção Desejada: """
+
+    desafio_2 = """
+    ================================
+        Bom vindo ao AdamBank!!!
+    ================================
+
+    [c]\tCadastrar nova Conta
+    [d]\tDepositar
+    [e]\tExtrato
+    [s]\tSacar
+    [u]\tCadastrar novo Usuario
+    [l]\tListar contas
+    [q]\tSair
+    ================================
+    
+    Digite a opção desejada: """
+
+
+    menus = {}
+    menus["escolhe_desafio"] = escolhe_desafio
+    menus["desafio_2"] = desafio_2
+
+
+    return menus[menu]
+
+
+def desafio_2():
+    pass
+
+
+def sacar():
+    print_opcao("sacar")
+
+
+def depositar():
+    print_opcao("depositar")
+
+
+def extrato():
+    print_opcao("extrato")
+
+
+def listar_contas():
+    print_opcao("listar contas")
+
+
+def criar_conta():
+    print_opcao("criar conta")
+
+
+def criar_usuario():
+    print_opcao("criar usuario")
+
+
+def print_opcao(texto:str) -> None:
+    print()
+    print("\t", "=" * 40, sep="")
+    print()
+
+
+
+
+# Função do desafio 1
+def desafio_1():
     menu = """
 
     [d] Depositar
