@@ -19,7 +19,7 @@ def main():
             print()
             desafio_1()
 
-        elif desafio == 2:
+        elif desafio == '2':
             print()
             print("=" * 40 )
             print("\tEntrando no desafio 2!")
@@ -75,7 +75,32 @@ def exibe_menu(menu: str) -> str:
 
 
 def desafio_2():
-    pass
+    """ Implementação do segundo desafio de python."""
+    
+    print("Bem vindo ao desafio 2")
+    opcao = ''
+
+    while opcao != 'q':
+        opcao = input(exibe_menu("desafio_2"))
+
+        match opcao:
+            case "s":
+                sacar()
+            case "c":
+                criar_conta()
+            case "d":
+                depositar()
+            case "e":
+                extrato()
+            case "u":
+                criar_usuario()
+            case "l":
+                listar_contas()
+            case "q":
+                print_opcao("Saindo")
+                return 
+            case _:
+                print_opcao("Opção invalida!")
 
 
 def sacar():
@@ -104,7 +129,9 @@ def criar_usuario():
 
 def print_opcao(texto:str) -> None:
     print()
-    print("\t", "=" * 40, sep="")
+    print("   ", "=" * 40)
+    print("\t\t", texto)
+    print("   ", "=" * 40)
     print()
 
 
