@@ -76,6 +76,30 @@ def exibe_menu(menu: str) -> str:
 
 def desafio_2():
     """ Implementação do segundo desafio de python."""
+
+    usuarios = []
+    endereco = {"logradouro": '',
+                "bairro": '',
+                "cidade": '',
+                "estado": '',
+                }
+    usuario = {"nome": '',
+               "cpf": '',
+               "endereco": endereco,
+               "contas": [],
+               }
+    conta_corrente = []
+    conta = {"conta": "0",
+             "agencia": "0001",
+             "saldo": 0,
+             "saques": 3,
+             "extrato": []
+             }
+    operacoes = {"operacao": '',
+                 "valor": ''
+                 }
+
+
     
     print("Bem vindo ao desafio 2")
     opcao = ''
