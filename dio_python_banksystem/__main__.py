@@ -78,15 +78,15 @@ def desafio_2():
     """ Implementação do segundo desafio de python."""
 
     usuarios = []
+    contas = []
     endereco = {"logradouro": '',
                 "bairro": '',
                 "cidade": '',
                 "estado": '',
                 }
-    usuario = {"nome": '',
-               "cpf": '',
+    usuario = {"CPF": '',
+               "nome": '',
                "endereco": endereco,
-               "contas": [],
                }
     conta_corrente = []
     conta = {"conta": "0",
@@ -111,13 +111,13 @@ def desafio_2():
             case "s":
                 sacar()
             case "c":
-                criar_conta()
+                criar_conta(usuarios, usuario)
             case "d":
                 depositar()
             case "e":
                 extrato()
             case "u":
-                criar_usuario()
+                criar_usuario(usuarios, usuario)
             case "l":
                 listar_contas()
             case "q":
@@ -147,9 +147,14 @@ def criar_conta():
     print_opcao("criar conta")
 
 
-def criar_usuario():
+def criar_usuario(usuarios: list, usuario: dict):
     print_opcao("criar usuario")
-
+    
+    print(usuarios)
+    novo_usuario = preencher_dados(usuario, usuarios)
+    if novo_usuario:
+        print(novo_usuario)
+        usuarios.append(novo_usuario)
 
 def print_opcao(texto:str) -> None:
     print()
@@ -158,6 +163,41 @@ def print_opcao(texto:str) -> None:
     print("   ", "=" * 40)
     print()
 
+
+def preencher_dados(campos: dict, contexto: list = []) -> dict:
+    novo_usuario = {}
+    for campo in campos:
+        if isinstance(campos[campo], str):
+            mensagem = f'\t{campo}: '
+            novo_usuario[campo] = input(mensagem)
+            if valida_campo(campo, novo_usuario[campo], contexto) == False:
+                return
+
+        elif isinstance(campos[campo], dict):
+            print_opcao("endereco: ")
+            novo_usuario[campo] = preencher_dados(campos[campo])
+
+    return novo_usuario
+
+
+def valida_campo(campo: str, valor: str, contexto: list = []) -> bool:
+    match campo:
+        case 'CPF':
+            if not valor.isdigit():
+                print("CPF Inválido, favor digitar apenas numeros")
+                return False
+            elif lista_cpfs(valor, contexto):
+                print("CPF já cadastrado")
+                print()
+
+                ### To do imprimir usuario)
+                return False
+    return True
+
+
+def lista_cpfs(cpf:str, usuarios: list) -> dict:
+    usuario = [usuario for usuario in usuarios if usuario['CPF'] == cpf]
+    return usuario[0] if usuario else None
 
 
 
