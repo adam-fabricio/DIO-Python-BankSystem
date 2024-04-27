@@ -79,18 +79,21 @@ def desafio_2():
 
     usuarios = []
     contas = []
+    
     endereco = {"logradouro": '',
                 "bairro": '',
                 "cidade": '',
                 "estado": '',
                 }
+    
     usuario = {"CPF": '',
                "nome": '',
                "endereco": endereco,
                }
-    conta_corrente = []
+    
     conta = {"conta": "0",
              "agencia": "0001",
+             'cpf': '',
              "saldo": 0,
              "saques": 3,
              "extrato": []
@@ -109,17 +112,17 @@ def desafio_2():
 
         match opcao:
             case "s":
-                sacar()
+                sacar(contas=contas)
             case "c":
-                criar_conta(usuarios, usuario)
+                criar_conta(usuarios, contas, conta)
             case "d":
-                depositar()
+                depositar(contas)
             case "e":
-                extrato()
+                extrato(contas, usuarios=usuarios)
             case "u":
                 criar_usuario(usuarios, usuario)
             case "l":
-                listar_contas()
+                lista_contas(contas)
             case "q":
                 print_opcao("Saindo")
                 return 
@@ -127,24 +130,148 @@ def desafio_2():
                 print_opcao("Opção invalida!")
 
 
-def sacar():
+def busca_conta(contas: list) -> dict:
+    numero_conta = input("\tNumero da Conta: ")
+    conta = [conta for conta in contas if conta['conta'] == numero_conta]
+    
+    return conta[0] if conta else None
+
+
+
+def sacar(*, contas: list) -> None:
     print_opcao("sacar")
+    conta = busca_conta(contas)
+    if not conta:
+        print("\tConta não localizada")
+        return
+
+    if not conta['saques']:
+        print("\tLimite de saque atingido!!!")
+        return
+
+    valor = float(input('\tValor: '))
+    if valor > 500:
+        print("\tValor maior que o limite.")
+        return
+    elif valor > conta['saldo']:
+        print("\tSaldo insulficiente!!!")
+        return
+    
+    conta['saques'] -= 1
+    conta['saldo'] -= valor
+    conta['extrato'].append(["Saque   ", valor])
 
 
-def depositar():
+    imprime_contas(conta['cpf'], contas)
+
+    
+
+
+def depositar(contas: list, /) -> None:
     print_opcao("depositar")
+    conta = busca_conta(contas)
+    if not conta:
+        print("\tConta não localizada")
+        return
+    
+    valor = float(input('\tValor: '))
+    conta['saldo'] += valor
+    conta['extrato'].append(['deposito', valor])
+    imprime_contas(conta['cpf'], contas)
 
 
-def extrato():
+def extrato(contas: list, /, *, usuarios: list) -> None:
     print_opcao("extrato")
+    conta = busca_conta(contas)
+    if not conta:
+        print("\tConta não localizada")
+        return
+    
+    cpf = conta['cpf']
+    usuario = lista_cpfs(cpf, usuarios)
+
+    print("\t==================================")
+    print(f"\t=  Cliente: {usuario['nome']} - CPF: {usuario['CPF']} \t=")
+    print("\t==================================")
+    print("=\tOperação\t-----\tValor\t=")
+    for operacao, valor in conta['extrato']:
+        print(f"\t{operacao}\t-----\tR$ {valor:.2f}")
+    print("\t==================================")
+    print(f"\tSaldo\t-----\tR$ {conta['saldo']:.2f}")
 
 
-def listar_contas():
+
+
+
+
+def lista_contas(contas: list):
     print_opcao("listar contas")
+    cpf = input("\tCPF: ")
+    if valida_campo("CPF", cpf) == False:
+        return
+
+    contas_cpf = [conta for conta in contas if conta['cpf'] == cpf]
+    if not contas_cpf:
+        print("Conta não encontrada para esse CPF")
+        return
+    
+    imprime_contas(cpf, contas_cpf)
+
+    
+    
+    
+def imprime_contas(cpf: str, contas: list) -> None:
+    print_opcao(f"CONTA - CPF {cpf}")
+    for  conta in contas:
+        imprime_campos(conta)
+        print('\n\n   ============================\n')
 
 
-def criar_conta():
+def imprime_usuario(cpf: str, usuarios: list) -> None:
+    usuario = lista_cpfs(cpf, usuarios)
+    if not usuario:
+        print("Usuário não encontrado!")
+        return
+    print_opcao("Usuario")
+
+    imprime_campos(usuario)
+
+
+def imprime_campos(dicionario: dict, tab: int=1):
+    print()
+    for campo, valor in dicionario.items():
+        print("\t" * tab, campo, ": ", sep='', end='')
+        if isinstance(valor, dict):
+            imprime_campos(valor, tab + 1)
+        else:
+            print(valor)
+
+
+
+
+def imprime_conta(numero_conta: str, contas: list) -> None:
+    print(contas[int(numero_conta) - 1])
+
+
+def criar_conta(usuarios: list, contas: list, conta: dict) -> None:
     print_opcao("criar conta")
+
+    cpf = input("Digite o CPF: ")
+    if valida_campo('cpf', cpf) == False:
+        return
+
+    if not lista_cpfs(cpf, usuarios):
+        print("Usuario não cadastrado!!!")
+        print("Favor cadastrar o usuario primeiro!!!")
+        return
+
+    nova_conta = dict(conta)
+    nova_conta['cpf'] = cpf
+    nova_conta['conta'] = str(len(contas) + 1)
+
+    contas.append(nova_conta)
+    
+    imprime_conta(nova_conta['conta'], contas)
 
 
 def criar_usuario(usuarios: list, usuario: dict):
@@ -155,6 +282,8 @@ def criar_usuario(usuarios: list, usuario: dict):
     if novo_usuario:
         print(novo_usuario)
         usuarios.append(novo_usuario)
+        
+        imprime_usuario(novo_usuario['CPF'], usuarios)
 
 def print_opcao(texto:str) -> None:
     print()
