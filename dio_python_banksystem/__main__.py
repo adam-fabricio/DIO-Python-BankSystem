@@ -1,5 +1,13 @@
-# __main__.py
+"""
+Contem os desafios feitos
+    1: Criando um Sistema Bancario
+    2: Otimizando o Sistema Bacario com Funções em python
+    3: POO
+        1 - Modelando o Sistema Bancario em POO com Python
+        2 - Decoradores, Iteratores e Geradores com Python
+        3 - Lidando com Data, Hora e Fuso Horário no Python
 
+"""
 
 from abc import ABC, abstractmethod, abstractproperty
 from textwrap import dedent
@@ -538,6 +546,7 @@ class Cliente:
     def __init__(self, endereco):
         self._edereco = endereco
         self._contas = []
+        self.__limite_transacoes = 10
 
     
     @property
@@ -549,10 +558,20 @@ class Cliente:
     def contas(self):
         return self._contas
 
-    @limite_transacoes_dia
     def realiza_transacao(self, conta: 'Conta', transacao: Transacao) -> None:
-        transacao.registrar(conta)
+        
+        qtd_transacoes = sum(1 for transacao in conta.historico.transacoes if
+                                transacao["status"] == 0 and
+            strftime("%x") == strftime("%x", localtime(transacao["data"])))
+        
+        if qtd_transacoes >= self.__limite_transacoes:
+            transacao.status = 1
+            transacao.mensagem = "Limite de transacoes por dia excedido"
+            conta.historico.adicionar_transacao(transacao) 
+        else:
+            transacao.registrar(conta)
 
+        
 
     def adiciona_conta(self, numero_conta):
         conta = ContaCorrente(numero_conta, self)
@@ -622,7 +641,7 @@ class Conta:
     
     @property
     def historico(self):
-        return self._hist orico
+        return self._historico
 
 
     @classmethod
@@ -690,11 +709,9 @@ class ContaCorrente(Conta):
 
         if quantidade_saques >= self.__quantidade_max:
             return 3
-            #print("Erro - Número máximo de saque atingido")
 
         elif valor > self.__valor:
             return 4
-            #print("Erro - Valor máximo de saque atingido")
 
         else:
             return super().sacar(valor)
@@ -757,8 +774,28 @@ def desafio_3():
     clientes[0].realiza_transacao(contas[0], Saque(450))
     clientes[0].realiza_transacao(contas[0], Saque(50))
     clientes[0].realiza_transacao(contas[0], Saque(50))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
+    clientes[0].realiza_transacao(contas[0], Deposito(1000))
 
-    [print(historico) for historico in clientes[0].contas[0].historico.relatorio_transacoes("saque")]
+    [print(historico) for historico in clientes[0].contas[0].historico.relatorio_transacoes("deposito")]
 
     clientes[0].contas[0].extrato
 
