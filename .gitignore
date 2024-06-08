@@ -3,4 +3,4 @@ replit.nix
 .breakpoints
 __pycache__
 *.swp
-
+.venv

@@ -7,57 +7,57 @@ Contem os desafios feitos
         2 - Decoradores, Iteratores e Geradores com Python
         3 - Lidando com Data, Hora e Fuso Horário no Python
         4 - Manipulando Arquivos em Python
+        5 - Boas Praticas!
 """
 
 from abc import ABC, abstractmethod, abstractproperty
-from textwrap import dedent
-from time import localtime, strftime, time
 from pathlib import Path
+from time import localtime, strftime, time
 
 ROOT_PATH = Path(__file__).parent
 
 
 # FunÃ§Ã£o mai
 def main():
-    desafio = ''
-    while desafio != 'q':
+    desafio = ""
+    while desafio != "q":
         desafio = input(exibe_menu("escolhe_desafio"))
         match desafio:
-            case '1':
+            case "1":
                 print()
-                print("=" * 40 )
+                print("=" * 40)
                 print("\tEntrando no desafio 1!")
-                print("=" * 40 )
+                print("=" * 40)
                 print()
                 desafio_1()
 
-            case '2':
+            case "2":
                 print()
-                print("=" * 40 )
+                print("=" * 40)
                 print("\tEntrando no desafio 2!")
-                print("=" * 40 )
+                print("=" * 40)
                 print()
                 desafio_2()
 
-            case '3':
+            case "3":
                 print()
-                print("=" * 40 )
+                print("=" * 40)
                 print("\tEntrando no desafio 3!")
-                print("=" * 40 )
+                print("=" * 40)
                 print()
                 desafio_3()
-        
-            case 'q':
+
+            case "q":
                 print()
-                print("=" * 40 )
+                print("=" * 40)
                 print("\t\tSaindo...")
-                print("=" * 40 )
+                print("=" * 40)
                 print()
-            
+
             case _:
-                print("=" * 40 )
+                print("=" * 40)
                 print("\t\tOpÃ§Ã£o Invalida...")
-                print("=" * 40 )
+                print("=" * 40)
 
 
 def exibe_menu(menu: str) -> str:
@@ -84,52 +84,47 @@ def exibe_menu(menu: str) -> str:
     [l]\tListar contas
     [q]\tSair
     ================================
-    
-    Digite a opca£o desejada: """
 
+    Digite a opca£o desejada: """
 
     menus = {}
     menus["escolhe_desafio"] = escolhe_desafio
     menus["desafio_2"] = desafio_2
 
-
     return menus[menu]
 
 
 def desafio_2():
-    """ ImplementaÃ§Ã£o do segundo desafio de python."""
+    """ImplementaÃ§Ã£o do segundo desafio de python."""
 
     usuarios = []
     contas = []
-    
-    endereco = {"logradouro": '',
-                "bairro": '',
-                "cidade": '',
-                "estado": '',
-                }
-    
-    usuario = {"CPF": '',
-               "nome": '',
-               "endereco": endereco,
-               }
-    
-    conta = {"conta": "0",
-             "agencia": "0001",
-             'cpf': '',
-             "saldo": 0,
-             "saques": 3,
-             "extrato": []
-             }
-    operacoes = {"operacao": '',
-                 "valor": ''
-                 }
 
+    endereco = {
+        "logradouro": "",
+        "bairro": "",
+        "cidade": "",
+        "estado": "",
+    }
 
-    
+    usuario = {
+        "CPF": "",
+        "nome": "",
+        "endereco": endereco,
+    }
+
+    conta = {
+        "conta": "0",
+        "agencia": "0001",
+        "cpf": "",
+        "saldo": 0,
+        "saques": 3,
+        "extrato": [],
+    }
     print("Bem vindo ao desafio 2")
-    opcao = ''
+    opcao = ""
 
-    while opcao != 'q':
+    while opcao != "q":
         opcao = input(exibe_menu("desafio_2"))
 
         match opcao:
@@ -147,17 +142,16 @@ def desafio_2():
                 lista_contas(contas)
             case "q":
                 print_opcao("Saindo")
-                return 
+                return
             case _:
                 print_opcao("OpÃ§Ã£o invalida!")
 
 
 def busca_conta(contas: list) -> dict:
     numero_conta = input("\tNumero da Conta: ")
-    conta = [conta for conta in contas if conta['conta'] == numero_conta]
-    
-    return conta[0] if conta else None
+    conta = [conta for conta in contas if conta["conta"] == numero_conta]
 
+    return conta[0] if conta else None
 
 
 def sacar(*, contas: list) -> None:
@@ -167,26 +161,23 @@ def sacar(*, contas: list) -> None:
         print("\tConta nÃ£o localizada")
         return
 
-    if not conta['saques']:
+    if not conta["saques"]:
         print("\tLimite de saque atingido!!!")
         return
 
-    valor = float(input('\tValor: '))
+    valor = float(input("\tValor: "))
     if valor > 500:
         print("\tValor maior que o limite.")
         return
-    elif valor > conta['saldo']:
+    elif valor > conta["saldo"]:
         print("\tSaldo insulficiente!!!")
         return
-    
-    conta['saques'] -= 1
-    conta['saldo'] -= valor
-    conta['extrato'].append(["Saque   ", valor])
 
+    conta["saques"] -= 1
+    conta["saldo"] -= valor
+    conta["extrato"].append(["Saque   ", valor])
 
-    imprime_contas(conta['cpf'], contas)
-
-    
+    imprime_contas(conta["cpf"], contas)
 
 
 def depositar(contas: list, /) -> None:
@@ -195,11 +186,11 @@ def depositar(contas: list, /) -> None:
     if not conta:
         print("\tConta nÃ£o localizada")
         return
-    
-    valor = float(input('\tValor: '))
-    conta['saldo'] += valor
-    conta['extrato'].append(['deposito', valor])
-    imprime_contas(conta['cpf'], contas)
+
+    valor = float(input("\tValor: "))
+    conta["saldo"] += valor
+    conta["extrato"].append(["deposito", valor])
+    imprime_contas(conta["cpf"], contas)
 
 
 def extrato(contas: list, /, *, usuarios: list) -> None:
@@ -208,45 +199,38 @@ def extrato(contas: list, /, *, usuarios: list) -> None:
     if not conta:
         print("\tConta nÃ£o localizada")
         return
-    
-    cpf = conta['cpf']
+
+    cpf = conta["cpf"]
     usuario = lista_cpfs(cpf, usuarios)
 
     print("\t==================================")
     print(f"\t=  Cliente: {usuario['nome']} - CPF: {usuario['CPF']} \t=")
     print("\t==================================")
     print("=\tOperaÃ§Ã£o\t-----\tValor\t=")
-    for operacao, valor in conta['extrato']:
+    for operacao, valor in conta["extrato"]:
         print(f"\t{operacao}\t-----\tR$ {valor:.2f}")
     print("\t==================================")
     print(f"\tSaldo\t-----\tR$ {conta['saldo']:.2f}")
 
 
-
-
-
-
 def lista_contas(contas: list):
     print_opcao("listar contas")
     cpf = input("\tCPF: ")
-    if valida_campo("CPF", cpf) == False:
-        return
+    return None if not valida_campo("CPF", cpf) else 0
 
-    contas_cpf = [conta for conta in contas if conta['cpf'] == cpf]
+    contas_cpf = [conta for conta in contas if conta["cpf"] == cpf]
     if not contas_cpf:
         print("Conta nÃ£o encontrada para esse CPF")
         return
-    
+
     imprime_contas(cpf, contas_cpf)
 
-    
-    
-    
+
 def imprime_contas(cpf: str, contas: list) -> None:
     print_opcao(f"CONTA - CPF {cpf}")
-    for  conta in contas:
+    for conta in contas:
         imprime_campos(conta)
-        print('\n\n   ============================\n')
+        print("\n\n   ============================\n")
 
 
 def imprime_usuario(cpf: str, usuarios: list) -> None:
@@ -259,16 +243,14 @@ def imprime_usuario(cpf: str, usuarios: list) -> None:
     imprime_campos(usuario)
 
 
-def imprime_campos(dicionario: dict, tab: int=1):
+def imprime_campos(dicionario: dict, tab: int = 1):
     print()
     for campo, valor in dicionario.items():
-        print("\t" * tab, campo, ": ", sep='', end='')
+        print("\t" * tab, campo, ": ", sep="", end="")
         if isinstance(valor, dict):
             imprime_campos(valor, tab + 1)
         else:
             print(valor)
-
-
 
 
 def imprime_conta(numero_conta: str, contas: list) -> None:
@@ -279,8 +261,7 @@ def criar_conta(usuarios: list, contas: list, conta: dict) -> None:
     print_opcao("criar conta")
 
     cpf = input("Digite o CPF: ")
-    if valida_campo('cpf', cpf) == False:
-        return
+    return None if not valida_campo("cpf", cpf) else 0
 
     if not lista_cpfs(cpf, usuarios):
         print("Usuario nÃ£o cadastrado!!!")
@@ -288,26 +269,27 @@ def criar_conta(usuarios: list, contas: list, conta: dict) -> None:
         return
 
     nova_conta = dict(conta)
-    nova_conta['cpf'] = cpf
-    nova_conta['conta'] = str(len(contas) + 1)
+    nova_conta["cpf"] = cpf
+    nova_conta["conta"] = str(len(contas) + 1)
 
     contas.append(nova_conta)
-    
-    imprime_conta(nova_conta['conta'], contas)
+
+    imprime_conta(nova_conta["conta"], contas)
 
 
 def criar_usuario(usuarios: list, usuario: dict):
     print_opcao("criar usuario")
-    
+
     print(usuarios)
     novo_usuario = preencher_dados(usuario, usuarios)
     if novo_usuario:
         print(novo_usuario)
         usuarios.append(novo_usuario)
-        
-        imprime_usuario(novo_usuario['CPF'], usuarios)
 
-def print_opcao(texto:str) -> None:
+        imprime_usuario(novo_usuario["CPF"], usuarios)
+
+
+def print_opcao(texto: str) -> None:
     print()
     print("   ", "=" * 40)
     print("\t\t", texto)
@@ -319,10 +301,10 @@ def preencher_dados(campos: dict, contexto: list = []) -> dict:
     novo_usuario = {}
     for campo in campos:
         if isinstance(campos[campo], str):
-            mensagem = f'\t{campo}: '
+            mensagem = f"\t{campo}: "
             novo_usuario[campo] = input(mensagem)
-            if valida_campo(campo, novo_usuario[campo], contexto) == False:
-                return
+            return None if not valida_campo(campo, novo_usuario[campo],
+                                            contexto) else 0
 
         elif isinstance(campos[campo], dict):
             print_opcao("endereco: ")
@@ -333,7 +315,7 @@ def preencher_dados(campos: dict, contexto: list = []) -> dict:
 
 def valida_campo(campo: str, valor: str, contexto: list = []) -> bool:
     match campo:
-        case 'CPF':
+        case "CPF":
             if not valor.isdigit():
                 print("CPF InvÃ¡lido, favor digitar apenas numeros")
                 return False
@@ -341,15 +323,13 @@ def valida_campo(campo: str, valor: str, contexto: list = []) -> bool:
                 print("CPF jÃ¡ cadastrado")
                 print()
 
-                ### To do imprimir usuario)
                 return False
     return True
 
 
-def lista_cpfs(cpf:str, usuarios: list) -> dict:
-    usuario = [usuario for usuario in usuarios if usuario['CPF'] == cpf]
+def lista_cpfs(cpf: str, usuarios: list) -> dict:
+    usuario = [usuario for usuario in usuarios if usuario["CPF"] == cpf]
     return usuario[0] if usuario else None
-
 
 
 # FunÃ§Ã£o do desafio 1
@@ -362,7 +342,7 @@ def desafio_1():
     [q] Sair
 
     => """
-    opcao = ''
+    opcao = ""
     saldo = 0
     deposito = []
     saque = []
@@ -370,14 +350,14 @@ def desafio_1():
     LIMITE_SAQUE = 3
     LIMITE_VALOR_SAQUE = 500
 
-    while opcao != 'q':
+    while opcao != "q":
         print("\n" * 2)
         print(f"Saldo: R$ {saldo:.2f}")
 
         print(menu)
         opcao = input("Digite a opÃ§Ã£o desejada: ")
 
-        if opcao == 'd':
+        if opcao == "d":
             print("===== Depositar =====\n")
             valor = float(input("Digite o valor do depÃ³sito: "))
             if valor < 0:
@@ -388,7 +368,7 @@ def desafio_1():
             extrato.append(1)
             print(f"Depósito de R$ {valor:.2f}!")
 
-        elif opcao == 's':
+        elif opcao == "s":
             print("===== Sacar =====")
             print()
             if len(saque) >= LIMITE_SAQUE:
@@ -407,7 +387,7 @@ def desafio_1():
                 continue
 
             elif valor > LIMITE_VALOR_SAQUE:
-                print("Valor de saque excede limite mÃ¡ximo de ", end='')
+                print("Valor de saque excede limite mÃ¡ximo de ", end="")
                 print(f"R$ {LIMITE_VALOR_SAQUE:.2f}")
 
                 continue
@@ -417,7 +397,7 @@ def desafio_1():
                 saque.append(valor)
                 extrato.append(0)
 
-        elif opcao == 'e':
+        elif opcao == "e":
             print("===== Extrato =====")
             s = 0
             d = 0
@@ -433,7 +413,7 @@ def desafio_1():
             print(f"Saldo: R$ {saldo:.2f}")
             print("=" * 20)
 
-        elif opcao == 'q':
+        elif opcao == "q":
             print("Saindo...")
 
         else:
@@ -452,14 +432,16 @@ class Transacao(ABC):
             cliente = conta.cliente.nome
             c_c = conta.numero_conta
             saldo = conta.saldo
-            
-            log = (f"{data_hora} - {status} - {operacao} -"
-                   f"Cliente: {cliente} - C/C: {c_c} - saldo: R$ {saldo:.2f}"
-                   f" - {self.mensagem}")
-            
-            log1 = (f"{data_hora},{funcao.__name__},{args},{resultado}\n")
+
+            log = (
+                f"{data_hora} - {status} - {operacao} -"
+                f"Cliente: {cliente} - C/C: {c_c} - saldo: R$ {saldo:.2f}"
+                f" - {self.mensagem}"
+            )
+
+            log1 = f"{data_hora},{funcao.__name__},{args},{resultado}\n"
             print(log)
-            with open(ROOT_PATH / 'log.txt', 'a') as f:
+            with open(ROOT_PATH / "log.txt", "a") as f:
                 f.write(log1)
             return resultado
 
@@ -468,7 +450,6 @@ class Transacao(ABC):
     @abstractmethod
     def registrar(self, conta):
         pass
-
 
     @abstractproperty
     def valor(self):
@@ -479,11 +460,9 @@ class Deposito(Transacao):
     def __init__(self, valor: str) -> None:
         self._valor = valor
 
-    
     @property
     def valor(self):
         return self._valor
-
 
     @Transacao.decorador_de_log
     def registrar(self, conta):
@@ -494,7 +473,7 @@ class Deposito(Transacao):
                 self.mensagem = "Deposito efetuado com sucesso"
             case _:
                 self.mensagem = "Valor menor que 0"
-        
+
         conta.historico.adicionar_transacao(self)
 
 
@@ -505,7 +484,7 @@ class Saque(Transacao):
     @property
     def valor(self):
         return self._valor
-    
+
     @Transacao.decorador_de_log
     def registrar(self, conta):
         self.status = conta.sacar(self.valor)
@@ -520,32 +499,33 @@ class Saque(Transacao):
                 self.mensagem = "Numero de saques diarios excedido"
             case 4:
                 self.mensagem = "Valor do saque excedido"
-        
+
         conta.historico.adicionar_transacao(self)
+
 
 class Historico:
     def __init__(self):
         self._transacoes = []
 
-    
     @property
     def transacoes(self):
         return self._transacoes
 
-
     def adicionar_transacao(self, transacao):
-        self._transacoes.append({"tipo": transacao.__class__.__name__,
-                                 "valor": transacao.valor,
-                                 "data": time(),
-                                 "status": transacao.status,
-                                 "mensagem": transacao.mensagem
-                                 })
+        self._transacoes.append(
+            {
+                "tipo": transacao.__class__.__name__,
+                "valor": transacao.valor,
+                "data": time(),
+                "status": transacao.status,
+                "mensagem": transacao.mensagem,
+            }
+        )
 
-    def relatorio_transacoes(self, tipo = "ALL"):
+    def relatorio_transacoes(self, tipo="ALL"):
         for transacao in self._transacoes:
             if tipo == "ALL" or tipo.lower() == transacao["tipo"].lower():
                 yield transacao
-
 
 
 class Cliente:
@@ -554,30 +534,29 @@ class Cliente:
         self._contas = []
         self.__limite_transacoes = 10
 
-    
     @property
     def endereco(self):
         return self._endereco
 
-    
     @property
     def contas(self):
         return self._contas
 
-    def realiza_transacao(self, conta: 'Conta', transacao: Transacao) -> None:
-        
-        qtd_transacoes = sum(1 for transacao in conta.historico.transacoes if
-                                transacao["status"] == 0 and
-            strftime("%x") == strftime("%x", localtime(transacao["data"])))
-        
+    def realiza_transacao(self, conta: "Conta", transacao: Transacao) -> None:
+
+        qtd_transacoes = sum(
+            1
+            for transacao in conta.historico.transacoes
+            if transacao["status"] == 0
+            and strftime("%x") == strftime("%x", localtime(transacao["data"]))
+        )
+
         if qtd_transacoes >= self.__limite_transacoes:
             transacao.status = 1
             transacao.mensagem = "Limite de transacoes por dia excedido"
-            conta.historico.adicionar_transacao(transacao) 
+            conta.historico.adicionar_transacao(transacao)
         else:
             transacao.registrar(conta)
-
-        
 
     def adiciona_conta(self, numero_conta):
         conta = ContaCorrente(numero_conta, self)
@@ -624,36 +603,29 @@ class Conta:
         self._historico = Historico()
         self._saldo = 0
 
-    
     @property
     def numero_conta(self):
         return self._numero_conta
-
 
     @property
     def cliente(self):
         return self._cliente
 
-    
     @property
     def agencia(self):
         return self._agencia
-
 
     @property
     def saldo(self):
         return self._saldo
 
-    
     @property
     def historico(self):
         return self._historico
 
-
     @classmethod
     def nova_conta(cls, cliente, numero):
         return cls(numero, cliente)
-
 
     def depositar(self, valor):
         if valor >= 0:
@@ -661,7 +633,6 @@ class Conta:
             return 0
         else:
             return 1
-
 
     def sacar(self, valor):
         if valor <= 0:
@@ -687,12 +658,15 @@ class Conta:
         if not self.historico.transacoes:
             print("Conta sem movimentação")
             return
-        transacoes = [transacao for transacao in self.historico.transacoes 
-                      if transacao["status"] == 0]
+        transacoes = [
+            transacao
+            for transacao in self.historico.transacoes
+            if transacao["status"] == 0
+        ]
         for transacao in transacoes:
-            d = localtime(transacao['data'])
+            d = localtime(transacao["data"])
             data = strftime("%x %X", d)
-            print(f"{data} - {transacao['tipo']} - R$ {transacao['valor']:.2f}")
+            print(f"{data}-{transacao['tipo']}-R$ {transacao['valor']:.2f}")
         print()
         print("===============")
         print(f"Saldo:\t\t R$ {self.saldo:.2f}")
@@ -703,15 +677,15 @@ class ContaCorrente(Conta):
     def __init__(self, numero_conta: str, cliente: Cliente) -> None:
         super().__init__(numero_conta, cliente)
         self.__valor = 500
-        self.__quantidade_max = 3 
-
-
+        self.__quantidade_max = 3
 
     def sacar(self, valor):
 
-        quantidade_saques = sum(1 for transacao in self.historico.transacoes if
-                                transacao["tipo"] == "Saque" and
-                                transacao["status"] == 0)
+        quantidade_saques = sum(
+            1
+            for transacao in self.historico.transacoes
+            if transacao["tipo"] == "Saque" and transacao["status"] == 0
+        )
 
         if quantidade_saques >= self.__quantidade_max:
             return 3
@@ -738,7 +712,6 @@ class ContaIterator:
         self._index = 0
         self._end = len(contas)
 
-
     def __iter__(self):
         return self
 
@@ -747,10 +720,12 @@ class ContaIterator:
             raise StopIteration
         conta = self._contas[self._index]
         self._index += 1
-        return {"numero": conta.numero_conta,
-                "cliente": conta.cliente.nome,
-                "saldo": conta.saldo,
-                "cpf": conta.cliente.cpf}
+        return {
+            "numero": conta.numero_conta,
+            "cliente": conta.cliente.nome,
+            "saldo": conta.saldo,
+            "cpf": conta.cliente.cpf,
+        }
 
 
 def desafio_3():
@@ -764,9 +739,8 @@ def desafio_3():
     contas.append(test_adiciona_conta(clientes[0], len(contas) + 1))
     contas.append(test_adiciona_conta(clientes[0], len(contas) + 1))
 
-
     [print(cliente) for cliente in clientes]
-    
+
     print(clientes[0].contas[0].cliente.nome)
     # deposito
 
@@ -801,29 +775,35 @@ def desafio_3():
     clientes[0].realiza_transacao(contas[0], Deposito(1000))
     clientes[0].realiza_transacao(contas[0], Deposito(1000))
 
-    [print(historico) for historico in clientes[0].contas[0].historico.relatorio_transacoes("deposito")]
+    [
+        print(historico)
+        for historico in clientes[0]
+        .contas[0]
+        .historico.relatorio_transacoes("deposito")
+    ]
 
     clientes[0].contas[0].extrato
 
     for conta in ContaIterator(contas):
-        info = (f"Conta: {conta['numero']} - Cliente: {conta['cliente']} - "
-                f"CPF: {conta['cpf']} - saldo: {conta['saldo']}")
+        info = (
+            f"Conta: {conta['numero']} - Cliente: {conta['cliente']} - "
+            f"CPF: {conta['cpf']} - saldo: {conta['saldo']}"
+        )
         print(info)
-
 
     # --- Fim do teste
 
     print("Desafio 3")
     while True:
-        opcao = input(exibe_menu('desafio_2'))
+        opcao = input(exibe_menu("desafio_2"))
 
         match opcao:
             case "q":
                 print_opcao("Saindo...")
                 break
             case "c":
-                """ Cadastrar conta"""
-                print_opcao('Criar conta')
+                """Cadastrar conta"""
+                print_opcao("Criar conta")
                 cpf = input("\tCPF do Cliente: ")
                 cliente = Cliente.busca_cliente(clientes, cpf)
 
@@ -831,16 +811,16 @@ def desafio_3():
                     contas.append(cliente.adiciona_conta(len(contas)))
 
             case "u":
-                """  Criar novo cliente. """
+                """Criar novo cliente."""
                 print_opcao("Cadastrar cliente")
                 cpf = input("\tCPF: ")
                 nome = input("\tnome: ")
                 data_nascimento = input("\tdata nascimento: ")
                 endereco = input("\tEndereco: ")
-                
-                clientes.append(PessoaFisica(endereco, 
-                                             cpf, 
-                                             nome, 
+
+                clientes.append(PessoaFisica(endereco,
+                                             cpf,
+                                             nome,
                                              data_nascimento))
 
             case _:
@@ -849,24 +829,21 @@ def desafio_3():
 
 def test_cria_clientes(clientes):
 
-    clientes.append(PessoaFisica(
-                                 "123456789",
+    clientes.append(PessoaFisica("123456789",
                                  "Joao",
                                  "01/01/2000",
                                  "Rua imaginario"))
-    
-    clientes.append(PessoaFisica(
-                                 "987654321",
-                                 "Abgail",
-                                 "01/01/2010",
-                                 "Rua imaginario1"))
+
+    clientes.append(
+        PessoaFisica("987654321", "Abgail", "01/01/2010", "Rua imaginario1")
+    )
+
 
 def test_adiciona_conta(cliente, numero_conta):
-     return cliente.adiciona_conta(numero_conta)
-
+    return cliente.adiciona_conta(numero_conta)
 
 
 #  Ponto de entrada do programa
 if __name__ == "__main__":
-    
+
     main()

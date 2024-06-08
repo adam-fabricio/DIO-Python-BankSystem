@@ -1,0 +1,111 @@
+dio_python_banksystem/__main__.py:13:1: F401 'textwrap.dedent' imported but unused
+dio_python_banksystem/__main__.py:28:31: E202 whitespace before ')'
+dio_python_banksystem/__main__.py:30:31: E202 whitespace before ')'
+dio_python_banksystem/__main__.py:36:31: E202 whitespace before ')'
+dio_python_banksystem/__main__.py:38:31: E202 whitespace before ')'
+dio_python_banksystem/__main__.py:44:31: E202 whitespace before ')'
+dio_python_banksystem/__main__.py:46:31: E202 whitespace before ')'
+dio_python_banksystem/__main__.py:49:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:52:31: E202 whitespace before ')'
+dio_python_banksystem/__main__.py:54:31: E202 whitespace before ')'
+dio_python_banksystem/__main__.py:56:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:58:31: E202 whitespace before ')'
+dio_python_banksystem/__main__.py:60:31: E202 whitespace before ')'
+dio_python_banksystem/__main__.py:87:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:91:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:96:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:104:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:110:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:115:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:123:5: F841 local variable 'operacoes' is assigned to but never used
+dio_python_banksystem/__main__.py:128:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:129:5: E303 too many blank lines (3)
+dio_python_banksystem/__main__.py:150:23: W291 trailing whitespace
+dio_python_banksystem/__main__.py:158:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:163:1: E303 too many blank lines (3)
+dio_python_banksystem/__main__.py:181:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:187:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:189:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:192:1: E303 too many blank lines (4)
+dio_python_banksystem/__main__.py:198:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:211:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:229:1: E303 too many blank lines (6)
+dio_python_banksystem/__main__.py:232:33: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+dio_python_banksystem/__main__.py:239:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:242:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:243:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:244:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:245:1: E303 too many blank lines (4)
+dio_python_banksystem/__main__.py:247:8: E271 multiple spaces after keyword
+dio_python_banksystem/__main__.py:262:46: E252 missing whitespace around parameter equals
+dio_python_banksystem/__main__.py:262:47: E252 missing whitespace around parameter equals
+dio_python_banksystem/__main__.py:274:1: E303 too many blank lines (4)
+dio_python_banksystem/__main__.py:282:33: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+dio_python_banksystem/__main__.py:295:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:301:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:307:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:310:1: E302 expected 2 blank lines, found 1
+dio_python_banksystem/__main__.py:310:22: E231 missing whitespace after ':'
+dio_python_banksystem/__main__.py:324:67: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+dio_python_banksystem/__main__.py:344:17: E266 too many leading '#' for block comment
+dio_python_banksystem/__main__.py:349:19: E231 missing whitespace after ':'
+dio_python_banksystem/__main__.py:355:1: E303 too many blank lines (3)
+dio_python_banksystem/__main__.py:356:1: E302 expected 2 blank lines, found 3
+dio_python_banksystem/__main__.py:455:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:459:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:473:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:482:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:483:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:488:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:497:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:508:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:523:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:526:1: E302 expected 2 blank lines, found 1
+dio_python_banksystem/__main__.py:530:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:531:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:536:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:544:40: E251 unexpected spaces around keyword / parameter equals
+dio_python_banksystem/__main__.py:544:42: E251 unexpected spaces around keyword / parameter equals
+dio_python_banksystem/__main__.py:551:1: E303 too many blank lines (3)
+dio_python_banksystem/__main__.py:557:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:558:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:562:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:563:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:568:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:570:33: E127 continuation line over-indented for visual indent
+dio_python_banksystem/__main__.py:571:13: E128 continuation line under-indented for visual indent
+dio_python_banksystem/__main__.py:572:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:576:59: W291 trailing whitespace
+dio_python_banksystem/__main__.py:580:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:582:5: E303 too many blank lines (3)
+dio_python_banksystem/__main__.py:627:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:628:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:633:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:637:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:638:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:643:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:647:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:648:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:653:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:658:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:666:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:690:75: W291 trailing whitespace
+dio_python_banksystem/__main__.py:695:80: E501 line too long (80 > 79 characters)
+dio_python_banksystem/__main__.py:706:34: W291 trailing whitespace
+dio_python_banksystem/__main__.py:710:5: E303 too many blank lines (3)
+dio_python_banksystem/__main__.py:742:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:768:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:769:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:804:80: E501 line too long (104 > 79 characters)
+dio_python_banksystem/__main__.py:814:5: E303 too many blank lines (2)
+dio_python_banksystem/__main__.py:840:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:841:55: W291 trailing whitespace
+dio_python_banksystem/__main__.py:842:50: W291 trailing whitespace
+dio_python_banksystem/__main__.py:843:51: W291 trailing whitespace
+dio_python_banksystem/__main__.py:857:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:864:1: E302 expected 2 blank lines, found 1
+dio_python_banksystem/__main__.py:865:6: E111 indentation is not a multiple of 4
+dio_python_banksystem/__main__.py:865:6: E117 over-indented
+dio_python_banksystem/__main__.py:869:1: E303 too many blank lines (3)
+dio_python_banksystem/__main__.py:870:1: E305 expected 2 blank lines after class or function definition, found 3
+dio_python_banksystem/__main__.py:871:1: W293 blank line contains whitespace

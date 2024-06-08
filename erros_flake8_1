@@ -1,0 +1,10 @@
+dio_python_banksystem/__main__.py:14:1: F401 'textwrap.dedent' imported but unused
+dio_python_banksystem/__main__.py:87:1: W293 blank line contains whitespace
+dio_python_banksystem/__main__.py:124:5: F841 local variable 'operacoes' is assigned to but never used
+dio_python_banksystem/__main__.py:221:33: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+dio_python_banksystem/__main__.py:267:33: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+dio_python_banksystem/__main__.py:310:67: E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+dio_python_banksystem/__main__.py:330:17: E266 too many leading '#' for block comment
+dio_python_banksystem/__main__.py:674:80: E501 line too long (80 > 79 characters)
+dio_python_banksystem/__main__.py:826:80: E501 line too long (83 > 79 characters)
+dio_python_banksystem/__main__.py:834:80: E501 line too long (86 > 79 characters)
