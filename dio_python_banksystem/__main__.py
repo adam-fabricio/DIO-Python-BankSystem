@@ -6,13 +6,15 @@ Contem os desafios feitos
         1 - Modelando o Sistema Bancario em POO com Python
         2 - Decoradores, Iteratores e Geradores com Python
         3 - Lidando com Data, Hora e Fuso Horário no Python
-
+        4 - Manipulando Arquivos em Python
 """
 
 from abc import ABC, abstractmethod, abstractproperty
 from textwrap import dedent
 from time import localtime, strftime, time
+from pathlib import Path
 
+ROOT_PATH = Path(__file__).parent
 
 
 # FunÃ§Ã£o mai
@@ -442,7 +444,7 @@ class Transacao(ABC):
 
     def decorador_de_log(funcao):
         def registro(*args, **kwargs):
-            funcao(*args, **kwargs)
+            resultado = funcao(*args, **kwargs)
             self, conta = args
             data_hora = strftime("%x %X")
             status = "Erro" if self.status else "Ok"
@@ -454,8 +456,12 @@ class Transacao(ABC):
             log = (f"{data_hora} - {status} - {operacao} -"
                    f"Cliente: {cliente} - C/C: {c_c} - saldo: R$ {saldo:.2f}"
                    f" - {self.mensagem}")
-
+            
+            log1 = (f"{data_hora},{funcao.__name__},{args},{resultado}\n")
             print(log)
+            with open(ROOT_PATH / 'log.txt', 'a') as f:
+                f.write(log1)
+            return resultado
 
         return registro
 

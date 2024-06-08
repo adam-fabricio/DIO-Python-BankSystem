@@ -1,0 +1,16 @@
+06/08/24 17:05:42,registrar,(<__main__.Deposito object at 0x7f8a547a1c10>, <__main__.ContaCorrente object at 0x7f8a547a1a90>),None
+06/08/24 17:06:06,registrar,(<__main__.Deposito object at 0x7fe127af9c10>, <__main__.ContaCorrente object at 0x7fe127af9a90>),None
+06/08/24 17:06:06,registrar,(<__main__.Deposito object at 0x7fe127af9c10>, <__main__.ContaCorrente object at 0x7fe127af9a90>),None
+06/08/24 17:06:06,registrar,(<__main__.Saque object at 0x7fe127af9c10>, <__main__.ContaCorrente object at 0x7fe127af9a90>),None
+06/08/24 17:06:06,registrar,(<__main__.Saque object at 0x7fe127af9c10>, <__main__.ContaCorrente object at 0x7fe127af9a90>),None
+06/08/24 17:06:06,registrar,(<__main__.Saque object at 0x7fe127af9c10>, <__main__.ContaCorrente object at 0x7fe127af9a90>),None
+06/08/24 17:06:06,registrar,(<__main__.Saque object at 0x7fe127af9c10>, <__main__.ContaCorrente object at 0x7fe127af9a90>),None
+06/08/24 17:06:06,registrar,(<__main__.Saque object at 0x7fe127af9c10>, <__main__.ContaCorrente object at 0x7fe127af9a90>),None
+06/08/24 17:06:06,registrar,(<__main__.Saque object at 0x7fe127af9c10>, <__main__.ContaCorrente object at 0x7fe127af9a90>),None
+06/08/24 17:06:06,registrar,(<__main__.Saque object at 0x7fe127af9c10>, <__main__.ContaCorrente object at 0x7fe127af9a90>),None
+06/08/24 17:06:06,registrar,(<__main__.Deposito object at 0x7fe127af9c10>, <__main__.ContaCorrente object at 0x7fe127af9a90>),None
+06/08/24 17:06:06,registrar,(<__main__.Deposito object at 0x7fe127af9c10>, <__main__.ContaCorrente object at 0x7fe127af9a90>),None
+06/08/24 17:06:06,registrar,(<__main__.Deposito object at 0x7fe127af9c10>, <__main__.ContaCorrente object at 0x7fe127af9a90>),None
+06/08/24 17:06:06,registrar,(<__main__.Deposito object at 0x7fe127af9c10>, <__main__.ContaCorrente object at 0x7fe127af9a90>),None
+06/08/24 17:06:06,registrar,(<__main__.Deposito object at 0x7fe127af9c10>, <__main__.ContaCorrente object at 0x7fe127af9a90>),None
+06/08/24 17:06:06,registrar,(<__main__.Deposito object at 0x7fe127af9c10>, <__main__.ContaCorrente object at 0x7fe127af9a90>),None
